@@ -1,0 +1,6 @@
+scoping
+-------
+var -> function scoped
+{
+  
+}
