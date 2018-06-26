@@ -7,3 +7,5 @@ function func(randomize) {
   return x; // accesses the x from line A
 }
 func(false); // undefined
+
+// do not hoist
