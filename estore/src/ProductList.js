@@ -37,11 +37,14 @@ class ProductList extends Component {
   };
 
   render() {
-    console.log("render");
     return (
       <div>
         {this.state.products.map(p => (
-          <ProductListItem key={p.id} product={p} onSell={this.saleItem} />
+          <ProductListItem
+            key={p.id}
+            product={{ ...p }}
+            onSell={this.saleItem}
+          />
         ))}
       </div>
     );

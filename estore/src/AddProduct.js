@@ -4,9 +4,17 @@ class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.state = { title: "iphone" };
+    this.priceEleRef = null;
+  }
+
+  getPrice() {
+    console.dir(this.priceEleRef);
+  }
+
+  setPrice() {
+    this.priceEleRef.value = 200;
   }
   render() {
-    console.log("render");
     return (
       <div>
         <form>
@@ -18,7 +26,10 @@ class AddProduct extends Component {
               this.setState({ title: e.target.value });
             }}
           />
+          <input type="text" ref={eleRef => (this.priceEleRef = eleRef)} />
         </form>
+        <button onClick={() => this.setPrice()}>SET</button>
+        <button onClick={() => this.getPrice()}>GET</button>
       </div>
     );
   }
