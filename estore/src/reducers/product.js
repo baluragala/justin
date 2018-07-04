@@ -6,15 +6,21 @@ import {
   GET_PRODUCTS_FAILURE
 } from "../actionTypes/product";
 
+import { fromJS } from "immutable";
+
 function productReducer(
-  prevState = { products: [], isLoading: false },
+  prevState = fromJS({ products: [], isLoading: false }),
   action
 ) {
+  console.log(prevState);
+  console.log(prevState.get("products"));
   switch (action.type) {
     case GET_PRODUCTS:
-      return { ...prevState, isLoading: true };
+      return prevState.set("isLoading", true);
     case GET_PRODUCTS_SUCCESS:
-      return { ...prevState, isLoading: false, products: action.products };
+      return prevState.withMutations(map =>
+        map.set("isLoading", false).set("products", fromJS(action.products))
+      );
     case GET_PRODUCTS_FAILURE:
       return { ...prevState, isLoading: false, error: action.error };
     case ADD_PRODUCT:

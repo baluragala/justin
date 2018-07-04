@@ -26,11 +26,11 @@ class ProductListItem extends Component {
     return (
       <div className="item">
         <h1>
-          <Link to={`/products/detail/${p.id}`}>{p.title}</Link>
+          <Link to={`/products/detail/${p.id}`}>{p.get("title")}</Link>
         </h1>
-        <h2>{p.price}</h2>
-        <h3>{p.stock}</h3>
-        <button onClick={() => onSell(p.id)}>SELL</button>
+        <h2>{p.get("price")}</h2>
+        <h3>{p.get("stock")}</h3>
+        <button onClick={() => onSell(p.get("id"))}>SELL</button>
       </div>
     );
   }
