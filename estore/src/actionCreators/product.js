@@ -1,7 +1,21 @@
-import { GET_PRODUCTS, ADD_PRODUCT, SELL } from "../actionTypes/product";
+import {
+  GET_PRODUCTS,
+  ADD_PRODUCT,
+  SELL,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_FAILURE
+} from "../actionTypes/product";
 
 export function getProductsActionCreator() {
   return { type: GET_PRODUCTS };
+}
+
+export function getProductsSuccessActionCreator(products) {
+  return { type: GET_PRODUCTS_SUCCESS, products };
+}
+
+export function getProductsErrorActionCreator(error) {
+  return { type: GET_PRODUCTS_FAILURE, error };
 }
 
 export function addProductActionCreator(product) {

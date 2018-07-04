@@ -24,6 +24,7 @@ class ProductList extends Component {
   render() {
     return (
       <div>
+        {this.props.isLoading && <h3>Loading...</h3>}
         {this.props.prds.map(p => (
           <ProductListItem
             key={p.id}
@@ -38,7 +39,8 @@ class ProductList extends Component {
 
 function mapStateToProps(state) {
   return {
-    prds: state.products
+    prds: state.products,
+    isLoading: state.isLoading
   };
 }
 

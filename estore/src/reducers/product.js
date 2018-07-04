@@ -1,30 +1,22 @@
-import { GET_PRODUCTS, ADD_PRODUCT, SELL } from "../actionTypes/product";
+import {
+  GET_PRODUCTS,
+  ADD_PRODUCT,
+  SELL,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_FAILURE
+} from "../actionTypes/product";
 
-function productReducer(prevState = { products: [] }, action) {
+function productReducer(
+  prevState = { products: [], isLoading: false },
+  action
+) {
   switch (action.type) {
     case GET_PRODUCTS:
-      return {
-        products: [
-          {
-            id: 1,
-            title: "mac book pro",
-            price: 2000,
-            stock: 20
-          },
-          {
-            id: 2,
-            title: "dell xps",
-            price: 1300,
-            stock: 40
-          },
-          {
-            id: 3,
-            title: "hp ultra book",
-            price: 1000,
-            stock: 27
-          }
-        ]
-      };
+      return { ...prevState, isLoading: true };
+    case GET_PRODUCTS_SUCCESS:
+      return { ...prevState, isLoading: false, products: action.products };
+    case GET_PRODUCTS_FAILURE:
+      return { ...prevState, isLoading: false, error: action.error };
     case ADD_PRODUCT:
       return { products: [...prevState.products, action.product] };
     case SELL:
